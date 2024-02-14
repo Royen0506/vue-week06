@@ -8,15 +8,14 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { defineRule, configure, Form, Field, ErrorMessage } from 'vee-validate'
 import * as AllRules from '@vee-validate/rules'
-import { localize } from '@vee-validate/i18n'
-import * as VeeValidateI18n from '@vee-validate/i18n'
-
-VeeValidateI18n.loadLocaleFromURL('./zh_TW.json')
+import { localize, setLocale } from '@vee-validate/i18n'
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 
 configure({
-  generateMessage: localize('zh_TW'),
+  generateMessage: localize({ zh_TW: zhTW }),
   validateOnInput: true // 調整為：輸入文字時，就立即進行驗證
 })
+setLocale('zh_TW')
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
