@@ -59,6 +59,7 @@
   <Pagination :page="pagination" @emit-page="getProductData" />
 
   <div
+    data-aos="fade-down"
     v-if="tempProduct || isNew"
     class="row justify-content-center mt-4 bg-light py-3 px-2 rounded-3"
   >
@@ -82,8 +83,8 @@
     <div v-else class="h3 fw-bold text-center mb-2">新增產品</div>
     <div class="col-12 col-lg-6">
       <div class="mb-3">
-        <label for="unit" class="form-label fw-bold">產品單位</label>
-        <input id="unit" class="form-control" type="text" v-model="tempProduct.unit" />
+        <label for="title" class="form-label fw-bold">產品名稱</label>
+        <input id="title" class="form-control" type="text" v-model="tempProduct.title" />
       </div>
       <div class="mb-3">
         <label for="mainImg" class="form-label fw-bold">產品主圖</label>
@@ -125,8 +126,12 @@
     </div>
     <div class="col-12 col-lg-6">
       <div class="mb-3">
-        <label for="category" class="form-label fw-bold">種類</label>
+        <label for="category" class="form-label fw-bold">產品類別</label>
         <input type="text" class="form-control" id="category" v-model="tempProduct.category" />
+      </div>
+      <div class="mb-3">
+        <label for="unit" class="form-label fw-bold">單位</label>
+        <input id="unit" class="form-control" type="text" v-model="tempProduct.unit" />
       </div>
       <div class="mb-3">
         <label for="originPrice" class="form-label fw-bold">產品原價</label>
@@ -141,10 +146,7 @@
         <label for="price" class="form-label fw-bold">售價</label>
         <input id="price" class="form-control" type="number" v-model.number="tempProduct.price" />
       </div>
-      <div class="mb-3">
-        <label for="title" class="form-label fw-bold">產品名稱</label>
-        <input id="title" class="form-control" type="text" v-model="tempProduct.title" />
-      </div>
+
       <div class="mb-3">
         <label for="content" class="form-label fw-bold">產品內容</label>
         <textarea
@@ -265,6 +267,7 @@ export default {
           this.closeEditComponent()
           this.getProductData(this.pagination.current_page)
           this.isLoading = false
+          this.isDeleteAdminProduct = false
           this.bsModal.show()
         })
     },

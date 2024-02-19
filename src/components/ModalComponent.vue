@@ -14,7 +14,7 @@
         <div class="modal-body">
           <p v-if="!isAdminDeleteProduct" class="mb-0">{{ modalTxt }}</p>
           <p v-else class="mb-0">
-            確認是否將 <span class="fw-bold">{{ modalTxt }}</span> 刪除
+            確認是否將 <span class="fw-bold">{{ modalTxt }}</span> 從產品列中移除
           </p>
         </div>
         <div class="modal-footer">

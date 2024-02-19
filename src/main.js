@@ -10,6 +10,8 @@ import { defineRule, configure, Form, Field, ErrorMessage } from 'vee-validate'
 import * as AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+import AOS from 'aos'
+import 'aos/dist/aos.css' // You can also use <link> for styles
 
 configure({
   generateMessage: localize({ zh_TW: zhTW }),
@@ -26,6 +28,7 @@ import router from './router'
 
 const app = createApp(App)
 
+AOS.init()
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
